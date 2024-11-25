@@ -2,9 +2,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by(id: params[:id])
     render :show
-
-    # @products= Product.all
-    # render template: "products/index"
   end
 
   def create
@@ -12,10 +9,11 @@ class ProductsController < ApplicationController
       id: params[:id],
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description],
+      supplier_id: params[:supplier_id],
     )
     if @product.valid?
+      Image.create(product_id: @product.id, url: params[:image_url])
       render :show
     else
       render json: { errors: @product.errors.full_messages }, status: 422
@@ -27,7 +25,6 @@ class ProductsController < ApplicationController
     @product.update(
       name: params[:name] || @product.title,
       price: params[:price] || @product.price,
-      image_url: params[:image_url] || @product.image_url,
       description: params[:description] || @product.description,
     )
     if @product.valid?
@@ -47,15 +44,4 @@ class ProductsController < ApplicationController
     @product.destroy
     render json: { message: "Recipe successfully destroyed!" }
   end
-
-  # def all_products
-  #   products = Product.all
-  #   result = []
-  #   index = 0
-  #   while index < products.length
-  #     result.push({ name: products[index].name, price: products[index].price, image_url: products[index].image_url, description: products[index].description })
-  #     index += 1
-  #   end
-  #   render json: result
-  # end
 end

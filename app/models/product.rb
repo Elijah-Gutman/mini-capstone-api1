@@ -18,4 +18,20 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
+
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
+
+  def images
+    Image.where(product_id: id)
+  end
+
+  def primary_image_url
+    if images.length > 0
+      images[0].url
+    else
+      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+    end
+  end
 end

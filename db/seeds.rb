@@ -7,11 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Product.create(id: 1, name: "Shoes", price: 9, image_url: "https://media.istockphoto.com/id/1350560575/photo/pair-of-blue-running-sneakers-on-white-background-isolated.jpg?s=612x612&w=0&k=20&c=A3w_a9q3Gz-tWkQL6K00xu7UHdN5LLZefzPDp-wNkSU=", description: "A Pair of shoes")
+Product.create(supplier_id: 1, id: 1, name: "Shoes", price: 9, description: "A Pair of shoes")
 
-Product.create(id: 2, name: "Shirts", price: 60, image_url: "https://t4.ftcdn.net/jpg/07/63/26/85/360_F_763268538_sk7wNf87lh0ioZMnAnLBOBlf1unB2RNi.jpg", description: "A stack of shirts")
+Product.create(supplier_id: 1, id: 2, name: "Shirts", price: 60, description: "A stack of shirts")
 
-Product.create(id: 3, name: "Ties", price: 200, image_url: "https://t4.ftcdn.net/jpg/09/16/54/31/
-360_F_916543101_AoWJ2snYsTA8sM3BoMLjniUF89y8N7yr.jpg", description: "A nice tie")
+Product.create(supplier_id: 2, id: 3, name: "Ties", price: 200, description: "A nice tie")
 
-Supplier.create()
+Supplier.create(name: "Gucci", email: "Gucci@expesnivenonsense.com", phone_number: "13378008")
+Supplier.create(name: "Fendi", email: "Fendi@expesnivenonsense.com", phone_number: "999999999")
+
+Image.create(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFNODUKcTOrxWxhtKB0f5_YaRxF-WuVtoabA&s", product_id: 1)
+Image.create(url: "https://www.fourkids.com/cdn/shop/files/Fendi-b7e48dd77d04d4d0a516192e220fd838.png?v=1724150908", product_id: 2)
+Image.create(url: "https://www.bows-n-ties.com/32861-xlarge_default/Elegant-Striped-Necktie-in-Navy-and-Light-Blue.jpg", product_id: 3)
+Image.create(url: "https://www.tiffanyrose.com/v3-img/products/A_WGTVR-zoom.jpg", product_id: 3)
+Image.create(url: "https://m.media-amazon.com/images/I/81mQszUx9iL._AC_UY1000_.jpg", product_id: 3)
