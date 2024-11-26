@@ -27,6 +27,9 @@ class Product < ApplicationRecord
     Image.where(product_id: id)
   end
 
+  belongs_to :supplier
+  has_many :images
+
   def primary_image_url
     if images.length > 0
       images[0].url
